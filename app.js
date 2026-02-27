@@ -36,14 +36,14 @@ else if(!players.black){
 else{
     uniquesocket.emit("spectatorRole");
 }
-uniquesocket.on("disconnect",function(){
- if(uniquesocket.id===players.white){
-    delete players.white;
-}else if(uniquesocket.id===players.white)
-    delete players.black;
-   
- }
-);
+uniquesocket.on("disconnect", function() {
+    if (uniquesocket.id === players.white) {
+        delete players.white;
+    } else if (uniquesocket.id === players.black) { // FIX: Changed from players.white to players.black
+        delete players.black;
+    }
+});
+
 
 uniquesocket.on("move",(move)=>{
     try {

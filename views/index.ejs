@@ -4,18 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chess Game</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
     
-Folder highlights
-Development materials detail a real-time custom chess game using Socket.io, EJS templates for views like shop and admin, and CSS for board styling.
-
-Gemini
-Ask about your files
-Summarize this folder
-Analyze each file in this folder
-What can Gemini do with folders in Google Drive
-Gemini in Workspace can make mistakes. Learn more
-<style>
+    <style>
+        /* Chessboard Layout */
         .chessboard {
             display: grid;
             grid-template-columns: repeat(8, minmax(0, 1fr));
@@ -25,6 +17,7 @@ Gemini in Workspace can make mistakes. Learn more
             transform: rotate(0deg);
         }
 
+        /* Piece Styling */
         .piece.white {
             color: white;
             filter: drop-shadow(0 0 2px rgba(0, 0, 0, 1));
@@ -32,24 +25,6 @@ Gemini in Workspace can make mistakes. Learn more
 
         .piece.black {
             color: black;
-        }
-
-        .flipped {
-            transform: rotate(180deg);
-        }
-
-        .square {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .square.light {
-            background-color: #f0d9b5;
-        }
-
-        .square.dark {
-            background-color: #b58863;
         }
 
         .piece {
@@ -65,20 +40,37 @@ Gemini in Workspace can make mistakes. Learn more
             opacity: 0.5;
         }
 
-        /* Rotate pieces for black player */
+        /* Square Styling */
+        .square {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .square.light {
+            background-color: #f0d9b5;
+        }
+
+        .square.dark {
+            background-color: #b58863;
+        }
+
+        /* Logic for Black Player's View */
+        .flipped {
+            transform: rotate(180deg);
+        }
+
+        /* Rotate pieces back for black player so they aren't upside down */
         .flipped .piece {
             transform: rotate(180deg);
         }
     </style>
 </head>
 
-
 <body>
-
-   <div class="w-full h-screen flex items-center justify-center bg-zinc-900">
-    <div class="chessboard w-96 h-96 bg-red-800"></div>
-
-</div>
+    <div class="w-full h-screen flex items-center justify-center bg-zinc-900">
+        <div class="chessboard"></div>
+    </div>
 
     <script src="https://cdn.socket.io/4.8.3/socket.io.min.js" 
             integrity="sha384-kzavj5fiMwLKzzD1f8S7TeoVIEi7uKHvbTA3ueZkrzYq75pNQUiUi6Dy98Q3fxb0" 
