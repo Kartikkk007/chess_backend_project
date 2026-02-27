@@ -7,7 +7,15 @@ const path = require("path");
 const app = express();
 
 const server = http.createServer(app);
-const io = socket(server);
+
+
+// Update your socket initialization (line 12 approx):
+const io = socket(server, {
+    cors: {
+        origin: "*", // Or your specific Render URL like "https://your-chess-app.onrender.com"
+        methods: ["GET", "POST"]
+    }
+});
 
 const chess = new Chess();
 let players = {};
@@ -72,8 +80,7 @@ io.on("connection", function(uniquesocket) {
 });
 
 // Render provides the port via an environment variable
-const port = process.env.PORT || 3000; 
-
-server.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+const port = process.env.PORT || 3000;
+server.listen(port, "0.0.0.0", () => {
+    console.log(`listening on port ${port}`);
 });

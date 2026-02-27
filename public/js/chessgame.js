@@ -1,4 +1,7 @@
-const socket = io();
+// Change the first line to this:
+const socket = io({
+    transports: ["websocket"] 
+});
 const chess = new Chess();
 const boardElement = document.querySelector(".chessboard");
 const roleDisplay = document.querySelector("#role-display");
